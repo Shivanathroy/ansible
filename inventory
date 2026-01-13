@@ -1,0 +1,14 @@
+[db]
+172.16.175.136
+
+[web]
+172.16.175.129
+
+[app]
+172.16.175.139
+
+[all:vars]
+ansible_user=ansible
+ansible_become=true
+ansible_become_method=sudo
+
