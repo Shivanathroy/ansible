@@ -7,8 +7,22 @@
 [app]
 172.16.175.139
 
+[ubuntu]
+172.16.175.141
+
 [all:vars]
 ansible_user=ansible
-ansible_become=true
-ansible_become_method=sudo
+# REMOVE ansible_become=true
 
+[db:vars]
+ansible_become=true
+
+[web:vars]
+ansible_become=true
+
+[app:vars]
+ansible_become=true
+
+[ubuntu:vars]
+ansible_python_interpreter=/usr/bin/python3
+# Only enable become in tasks that need it
