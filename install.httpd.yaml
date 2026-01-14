@@ -1,0 +1,26 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Stop nginx
+      service:
+        name: nginx
+        state: stopped
+      ignore_errors: yes
+
+    - name: Remove nginx
+      yum:
+        name: nginx
+        state: absent
+
+    - name: Stop php-fpm
+      service:
+        name: php-fpm
+        state: stopped
+      ignore_errors: yes
+
+    - name: Remove php packages
+      yum:
+        name:
+          - php
+          - php-fpm
+        state: absent
