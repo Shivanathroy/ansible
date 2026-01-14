@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+
+  vars:
+    packages:
+      - nginx
+      - git
+      - curl
+
+  tasks:
+    - name: Remove packages on RedHat/CentOS
+      yum:
+        name: "{{ packages }}"
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Remove packages on Ubuntu/Debian
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+
+
+       

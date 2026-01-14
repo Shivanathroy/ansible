@@ -1,28 +1,10 @@
-[db]
-172.16.175.136
-
-[web]
+[all]
 172.16.175.129
-
-[app]
+172.16.175.136
 172.16.175.139
-
-[ubuntu]
 172.16.175.141
 
 [all:vars]
 ansible_user=ansible
-# REMOVE ansible_become=true
-
-[db:vars]
-ansible_become=true
-
-[web:vars]
-ansible_become=true
-
-[app:vars]
-ansible_become=true
-
-[ubuntu:vars]
 ansible_python_interpreter=/usr/bin/python3
-# Only enable become in tasks that need it
+
