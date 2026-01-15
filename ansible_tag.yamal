@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Install nginx on RedHat
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+      tags:
+        - install
+        - redhat
+
+    - name: Install nginx on Ubuntu
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+      tags:
+        - install
+        - Debian
+
+
+
+
+
